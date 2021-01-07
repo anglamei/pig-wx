@@ -1,12 +1,16 @@
 /**
  *@des 登录注册相关接口
- *@author hjp1011 21931118@qq.com
- *@blog http://www.wephp.com
- *@date 2019/11/15 15:14:47
- *@param login.js
+ *@author wes 836790625@qq.com
+ *@date 2021/01/01
  */
 
+const loginByUsername = '/auth/oauth/token';
+const refreshToken = '/auth/oauth/token';
+const loginByMobile = '/auth/mobile/token/sms';
+const loginBySocial = '/auth/mobile/token/social';
+const getUserInfo = '/admin/user/info';
+const logout = '/auth/token/logout';
 
 export {
-	
+	loginByUsername, refreshToken, loginByMobile, loginBySocial, getUserInfo, logout
 };

@@ -80,7 +80,6 @@ export default {
 			});
 		},
 
-
 		// 设备绑定(app推送)
 		async handleBindingEquipment(id, token) {
 			const oauth_client = uni.getSystemInfoSync().platform;
@@ -93,10 +92,11 @@ export default {
 		async handleVerifyAccessToken (token) {
 			 await this.$http.post(verifyAccessToken, { token }).then(r => {
 				 if (!r.data.token) {
-								this.$mStore.commit('logout');
+						this.$mStore.commit('logout');
 				 }
 			 });
     },
+		
 		// 推送消息跳转
 		async navTo(item) {
 			let route;
