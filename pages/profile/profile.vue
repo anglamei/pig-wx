@@ -6,10 +6,10 @@
 			<!--用户信息-->
 			<view class="user-info-box">
 				<view class="portrait-box" @tap="navTo(`/pages/public/login`)">
-					<image class="portrait" :src="headImg"></image>
+					<image class="portrait" :src="userInfo.avatar || headImg"></image>
 					<text class="username">
-						{{'登录/注册'}}
-						{{ '18986869999'}}
+						{{userInfo.username ||'登录/注册'}}
+						{{userInfo.phone || '没有填写手机号'}}
 					</text>
 				</view>
 			</view>
@@ -20,9 +20,9 @@
 				</view>
 				<view class="tit">
 					<i class="iconfont iconzuanshi" />
-					{{ '维博网络' }}
+					{{ '金华航大北斗应用技术有限公司' }}
 				</view>
-				<text class="e-m">技术交流请加QQ群:1107210028</text>
+				<text class="e-m">技术支持: http://www.bjbari.com</text>
 			</view>
 		</view>
 		<!-- 个人中心 内容区-->
@@ -123,6 +123,8 @@
 				coverTransform: 'translateY(0px)',
 				coverTransition: '0s',
 				moving: false,
+				userInfo: {},
+				user: {},
 			};
 		},
 		async onShow() {
@@ -153,7 +155,8 @@
 			},
 			// 数据初始化
 			async initData() {
-				// this.user = uni.getStorageSync('user');
+				this.user = uni.getStorageSync('user');
+				this.userInfo = uni.getStorageSync('userInfo');
 				// 缓存大小
 				this.setList[2].content = `${uni.getStorageInfoSync().currentSize} kb`;
 				// #ifdef APP-PLUS

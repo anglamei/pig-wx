@@ -14,15 +14,40 @@
 
 					<view class="input-item">
 						<text class="tit">手机号码</text>
-						<input type="number" name="mobile" placeholder="请输入手机号码" maxlength="11" @blur="blurMobileChange" />
+						<input type="number" name="mobile" placeholder="请输入手机号码" maxlength="11" 
+							@blur="blurMobileChange" 
+							v-model="model.mobile"/>
 					</view>
-					<view class="input-item" >
-						<text class="tit">密码</text>
-						<input name="password" type="password" placeholder="请输入密码" maxlength="20" />
-					</view>
+					<view class="input-item input-item-sms-code">
+						<view class="input-wrapper">
+							<view class="oa-input-wrapper">
+								<view class="tit">验证码</view>
+									<input
+											type="number"
+											v-model="model.code"
+											placeholder="请输入验证码"
+											maxlength="4"
+											data-key="mobile"
+										/>
+									</view>		
+										<button
+											class="sms-code-btn"
+											:disabled="smsCodeBtnDisabled"
+											@tap.stop="getSmsCode"
+										>
+											<text v-if="!smsCodeBtnDisabled">获取验证码</text>
+											<text v-else class="sms-code-resend">{{
+												`重新发送 (${codeSeconds})`
+												}}</text>
+										</button>
+									</view>
+								</view>
 
 					
-					<button class="confirm-btn" :class="'bg-' + themeColor.name" >
+					<button class="confirm-btn" :class="'bg-' + themeColor.name" 
+						:disabled="btnLoading"
+						:loading="btnLoading"
+						@tap="toLogin">	
 						登录
 					</button>
 				</view>
@@ -46,9 +71,50 @@
 		data() {
 			return {
 				smsCodeBtnDisabled: false,
+				model: {},
+				btnLoading: false
 			};
 		},
 		methods: {
+			// 失去焦点的手机号
+			blurMobileChange(e) {
+				//this.mobile = e.detail.value;
+			},
+			// 发送验证码并进入倒计时
+			getSmsCode() {
+				let checkSendCode = this.$mGraceChecker.check(
+					this.model,
+					this.$mFormRule.sendCodeRule
+				);
+				if (!checkSendCode) {
+					this.$mHelper.toast(this.$mGraceChecker.error);
+					return;
+				}
+				this.$http.get('/admin/mobile/' + this.model['mobile'], {}, {
+					header: { 'Authorization': 'Basic cGlnOnBpZw==' }
+					}).then(r => {
+						if (r.data) {
+							this.$mHelper.toast(`验证码发送成功`); //, 验证码是${r.msg}
+							this.smsCodeBtnDisabled = true;
+							uni.setStorageSync('loginSmsCodeTime', moment().valueOf() / 1000);
+							this.handleSmsCodeTime(59);
+						} else {
+							this.$mHelper.toast(r.msg === '手机号未注册' ? '手机号未绑定账号' : r.msg);
+						}
+					})			
+			},
+			handleSmsCodeTime(time) {
+				let timer = setInterval(() => {
+					if (time === 0) {
+						clearInterval(timer);
+						this.smsCodeBtnDisabled = false;
+					} else {
+						this.codeSeconds = time;
+						this.smsCodeBtnDisabled = true;
+						time--;
+					}
+				}, 1000);
+			},
 			// 返回上一页
 			navBack() {
 				this.$mRouter.back();

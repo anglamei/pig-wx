@@ -35,11 +35,13 @@ export default {
 				false
 			);
 			// #endif
+			
+			// #ifdef MP-WEIXIN
+			this.initWeixinData()
+			// #endif
+			
 			// 获取系统title高度
 			await this.initSystemInfo();
-			if (token) {
-				await this.handleVerifyAccessToken(token);
-			}
 			if (this.$mStore.getters.hasLogin) {
 				// 初始化Websocket
 				// await this.$mWebsocket.initWebsocket();
@@ -53,6 +55,29 @@ export default {
 			// #ifdef H5
 			await this.$mPayment.wxConfigH5(window.location.href);
 			// #endif
+		},
+		// 获取微信账号数据
+		initWeixinData() {
+			//1.获取code，判断是否绑定
+			var ctx = this
+			uni.login({
+				provider: 'weixin',
+			  success(res){
+					ctx.$http.post('/auth/mobile/token/social?grant_type=mobile&mobile=MINI@'+res.code, {}, { 
+						header: { 'Authorization': 'Basic cGlnOnBpZw==' }
+					}).then(r => {
+						debugger
+						//ctx.$mStore.commit('login', r)
+					}).catch(err => {
+						if (err.statusCode === 401){
+							console.log('跳转登录')
+							uni.navigateTo({
+								url: '/pages/public/login'
+							});
+						}
+					});				
+			  }
+			})			
 		},
 		// 初始化系统信息
 		initSystemInfo() {
@@ -89,13 +114,6 @@ export default {
 				oauth_client_user_id: id
 			});
 		},
-		async handleVerifyAccessToken (token) {
-			 await this.$http.post(verifyAccessToken, { token }).then(r => {
-				 if (!r.data.token) {
-						this.$mStore.commit('logout');
-				 }
-			 });
-    },
 		
 		// 推送消息跳转
 		async navTo(item) {

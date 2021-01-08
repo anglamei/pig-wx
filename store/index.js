@@ -66,12 +66,12 @@ const store = new Vuex.Store({
 		login(state, provider) {
 			state.accessToken = provider.access_token;
 			state.refreshToken = provider.refresh_token;
-			state.userInfo = provider.member;
+			state.userInfo = provider.user_info;
 			state.user = provider;
 			uni.setStorageSync('user', provider);
 			uni.setStorageSync('accessToken', provider.access_token);
 			uni.setStorageSync('refreshToken', provider.refresh_token);
-			uni.setStorageSync('userInfo', provider.member);
+			uni.setStorageSync('userInfo', provider.user_info);
 		},
 		logout(state) {
 			state.accessToken = '';
