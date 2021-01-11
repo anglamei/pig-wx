@@ -194,10 +194,10 @@
         "appid" : "",
         // 这里添加微信小程序appid
         "setting" : {
-            "urlCheck" : true,
-            "minified" : true,
-            "postcss" : true,
-            "es6" : true
+            "urlCheck" : false,
+            "minified" : false,
+            "postcss" : false,
+            "es6" : false
         },
         "permission" : {}
     },

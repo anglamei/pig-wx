@@ -66,8 +66,8 @@ export default {
 					ctx.$http.post('/auth/mobile/token/social?grant_type=mobile&mobile=MINI@'+res.code, {}, { 
 						header: { 'Authorization': 'Basic cGlnOnBpZw==' }
 					}).then(r => {
-						debugger
-						//ctx.$mStore.commit('login', r)
+						ctx.$mStore.commit('login', r)
+						console.log('初始化完成')
 					}).catch(err => {
 						if (err.statusCode === 401){
 							console.log('跳转登录')

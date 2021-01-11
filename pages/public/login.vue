@@ -64,6 +64,7 @@
 	</view>
 </template>
 <script>
+	import moment from '@/common/moment';
 	export default {
 		components: {
 
@@ -71,9 +72,21 @@
 		data() {
 			return {
 				smsCodeBtnDisabled: false,
+				codeSeconds: 0, // 验证码发送时间间隔
 				model: {},
 				btnLoading: false
 			};
+		},
+		onLoad() {
+			const time = moment().valueOf() / 1000 - uni.getStorageSync('loginSmsCodeTime');
+			if (time < 60) {
+				this.codeSeconds = this.$mConstDataConfig.sendCodeTime - parseInt(time, 10);
+				this.handleSmsCodeTime(this.codeSeconds);
+			} else {
+				this.codeSeconds = this.$mConstDataConfig.sendCodeTime;
+				this.smsCodeBtnDisabled = false;
+				uni.removeStorageSync('loginSmsCodeTime');
+			}	
 		},
 		methods: {
 			// 失去焦点的手机号
@@ -94,10 +107,11 @@
 					header: { 'Authorization': 'Basic cGlnOnBpZw==' }
 					}).then(r => {
 						if (r.data) {
-							this.$mHelper.toast(`验证码发送成功`); //, 验证码是${r.msg}
+							this.$mHelper.toast(`验证码发送成功!`);
 							this.smsCodeBtnDisabled = true;
 							uni.setStorageSync('loginSmsCodeTime', moment().valueOf() / 1000);
 							this.handleSmsCodeTime(59);
+							console.log(`验证码是${r.msg}`)
 						} else {
 							this.$mHelper.toast(r.msg === '手机号未注册' ? '手机号未绑定账号' : r.msg);
 						}
@@ -126,6 +140,52 @@
 			// 返回主页
 			toHome() {
 				this.$mRouter.reLaunch({ route: '/pages/index/index' });
+			},
+			// 提交表单
+			async toLogin() {
+				const cheRes = this.$mGraceChecker.check(
+					this.model,
+					this.$mFormRule.loginByCodeRule
+				);
+				if (!cheRes) {
+					this.$mHelper.toast(this.$mGraceChecker.error);
+					return;
+				}
+				await this.handleLogin(this.model);
+			},
+			// 登录
+			async handleLogin(params) {
+				this.btnLoading = true;
+				await this.$http
+					.post('/auth/mobile/token/sms?mobile=SMS@'+params.mobile+'&code='+params.code+'&grant_type=mobile', {}, {
+						header: { 'Authorization': 'Basic cGlnOnBpZw==' }
+					})
+					.then(r => {
+						this.$mHelper.toast('恭喜您，登录成功！');
+						this.$mStore.commit('login', r);
+						// #ifdef MP-WEIXIN
+						this.setUserBind()
+						// #endif
+						this.btnLoading = false;
+						this.$mRouter.reLaunch({ route: '/pages/profile/profile' });
+					})
+					.catch(() => {
+						this.btnLoading = false;
+					});
+			},
+			// 微信绑定用户
+			setUserBind() {
+				var ctx = this
+				//1.获取code，判断是否绑定
+				uni.login({
+					provider: 'weixin',
+					success(res){
+						ctx.$http.post('/admin/social/bind?state=MINI&code='+res.code).
+						then(r => {
+							console.log('用户绑定 success!')
+						})
+					}
+				})	
 			},
 		}
 	}

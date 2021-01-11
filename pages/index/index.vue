@@ -101,6 +101,12 @@
 				}], // 广告图
 			};
 		},
+		watch:{
+			'$store.state.userInfo': function () {
+				//this.hasLogin = this.$mStore.getters.hasLogin;
+			  //this.get()
+			},
+		},
 		filters: {
 			notifyTypeFilter(val) {
 				return '公告';
@@ -125,6 +131,7 @@
 			},
 			// 数据初始化
 			initData() {
+				let userInfo = this.$store.state.userInfo
 				uni.setNavigationBarColor({
 					frontColor: '#ffffff',
 					backgroundColor: this.themeColor.color,

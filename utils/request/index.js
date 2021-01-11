@@ -58,7 +58,6 @@ http.interceptor.response(
 		/* 请求之后拦截器 */
 		switch (response.data.code) {
 			case 0: 
-				debugger
 				return response.data;
 			case 200:
 				return response.data;
@@ -132,11 +131,11 @@ http.interceptor.response(
 				mHelper.toast('服务器打瞌睡了');
 				return Promise.reject(response.data.msg);
 			default:
-				return Promise.reject(response.data);
+				return response.data;
 		}
 	},
 	error => {
-		return Promise.reject(error);
+		return error;
 	}
 );
 

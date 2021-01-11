@@ -1,6 +1,6 @@
 export default {
 	// app应用名称
-	appName: '通用办公',
+	appName: 'Pig-WX',
 
 	// 验证码发送间隔
 	sendCodeTime: 60,
