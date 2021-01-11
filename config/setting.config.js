@@ -4,10 +4,14 @@ class Setting {
 	constructor(
 		appName,
 		appLogo,
+		styleLoadingIsOpen,
+		styleLoadingType,
 		
 	) {
 		this._appName = appName; // 应用名称
 		this._appLogo = appLogo; // 应用Logo
+		this._styleLoadingIsOpen = styleLoadingIsOpen; // 开启加载
+		this._styleLoadingType = styleLoadingType; // 用户可否自定义风格
 
 	}
 
@@ -29,10 +33,28 @@ class Setting {
 		this._appLogo = value;
 	}
 
+	get styleLoadingIsOpen() {
+		return this._styleLoadingIsOpen;
+	}
+
+	set styleLoadingIsOpen(value) {
+		this._styleLoadingIsOpen = value;
+	}
+
+	get styleLoadingType() {
+		return this._styleLoadingType;
+	}
+
+	set styleLoadingType(value) {
+		this._styleLoadingType = value;
+	}
 	
 }
 export default new Setting(
 	$mConstData.appName,
 	$mAssetsPath.logo,
+	// loading
+	true,
+	'loop',
 	
 );

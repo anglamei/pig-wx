@@ -74,22 +74,22 @@
 			</view>
 		</view>
 
+		<!--页面加载动画-->
+		<rfLoading isFullScreen :active="loading"></rfLoading>
 	</view>
 
 </template>
 <script>
+	import { mapMutations } from 'vuex';
 	import moment from '@/common/moment';
 	import listCell from '@/components/oa-list-cell';
-	import {
-		mapMutations
-	} from 'vuex';
 	import oaSwipeDot from '@/components/oa-swipe-dot';
 	import rfSwiperSlide from '@/components/oa-swiper-slide';
 	export default {
 		components: {
 			listCell,
 			oaSwipeDot,
-			rfSwiperSlide,
+			rfSwiperSlide
 		},
 		data() {
 			return {
@@ -99,12 +99,12 @@
 					"adv_title": "巴盐古道-一条穿越时空的沧桑古道",
 					"cover": "http://wephp-oa.oss-cn-shenzhen.aliyuncs.com/images/2020/09/11/image_1599815054_N5jFSbzF.jpg"
 				}], // 广告图
+				loading: true
 			};
 		},
 		watch:{
 			'$store.state.userInfo': function () {
-				//this.hasLogin = this.$mStore.getters.hasLogin;
-			  //this.get()
+			  this.initData()
 			},
 		},
 		filters: {
@@ -124,6 +124,11 @@
 				return bottom;
 			}
 		},
+		// 下拉刷新
+		onPullDownRefresh() {
+			this.loading = true;
+			this.initData();
+		},
 		methods: {
 			// 监听轮播图切换
 			handleDotChange(e) {
@@ -140,6 +145,7 @@
 						timingFunc: 'easeIn'
 					}
 				})
+				this.loading = false;
 			},
 
 			// 通用跳转
