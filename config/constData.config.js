@@ -45,7 +45,7 @@ export default {
 			url: '/pages/set/feedback/list',
 			content: ''
 		},
-		
+
 	],
 
 	//应用中心-工作流
@@ -251,10 +251,10 @@ export default {
 			name: 'rf',
 			color: '#fa436a',
 			tabList: [
-				'/static/tab-home-rf.png',
-				'/static/tab-notify-rf.png',
-				'/static/tab-cate-rf.png',
-				'/static/tab-my-rf.png'
+				'/static/tab/home-rf.png',
+				'/static/tab/notify-rf.png',
+				'/static/tab/cate-rf.png',
+				'/static/tab/my-rf.png'
 			]
 		},
 		{
@@ -262,10 +262,10 @@ export default {
 			name: 'red',
 			color: '#e54d42',
 			tabList: [
-				'/static/tab-home-red.png',
-				'/static/tab-notify-red.png',
-				'/static/tab-cate-red.png',
-				'/static/tab-my-red.png'
+				'/static/tab/home-red.png',
+				'/static/tab/notify-red.png',
+				'/static/tab/cate-red.png',
+				'/static/tab/my-red.png'
 			]
 		},
 		{
@@ -273,10 +273,10 @@ export default {
 			name: 'orange',
 			color: '#f37b1d',
 			tabList: [
-				'/static/tab-home-orange.png',
-				'/static/tab-notify-orange.png',
-				'/static/tab-cate-orange.png',
-				'/static/tab-my-orange.png'
+				'/static/tab/home-orange.png',
+				'/static/tab/notify-orange.png',
+				'/static/tab/cate-orange.png',
+				'/static/tab/my-orange.png'
 			]
 		},
 		{
@@ -284,10 +284,10 @@ export default {
 			name: 'yellow',
 			color: '#fbbd08',
 			tabList: [
-				'/static/tab-home-yellow.png',
-				'/static/tab-notify-yellow.png',
-				'/static/tab-cate-yellow.png',
-				'/static/tab-my-yellow.png'
+				'/static/tab/home-yellow.png',
+				'/static/tab/notify-yellow.png',
+				'/static/tab/cate-yellow.png',
+				'/static/tab/my-yellow.png'
 			]
 		},
 		{
@@ -295,10 +295,10 @@ export default {
 			name: 'olive',
 			color: '#8dc63f',
 			tabList: [
-				'/static/tab-home-olive.png',
-				'/static/tab-notify-olive.png',
-				'/static/tab-cate-olive.png',
-				'/static/tab-my-olive.png'
+				'/static/tab/home-olive.png',
+				'/static/tab/notify-olive.png',
+				'/static/tab/cate-olive.png',
+				'/static/tab/my-olive.png'
 			]
 		},
 		{
@@ -306,10 +306,10 @@ export default {
 			name: 'green',
 			color: '#39b54a',
 			tabList: [
-				'/static/tab-home-green.png',
-				'/static/tab-notify-green.png',
-				'/static/tab-cate-green.png',
-				'/static/tab-my-green.png'
+				'/static/tab/home-green.png',
+				'/static/tab/notify-green.png',
+				'/static/tab/cate-green.png',
+				'/static/tab/my-green.png'
 			]
 		},
 		{
@@ -317,10 +317,10 @@ export default {
 			name: 'cyan',
 			color: '#1cbbb4',
 			tabList: [
-				'/static/tab-home-cyan.png',
-				'/static/tab-notify-cyan.png',
-				'/static/tab-cate-cyan.png',
-				'/static/tab-my-cyan.png'
+				'/static/tab/home-cyan.png',
+				'/static/tab/notify-cyan.png',
+				'/static/tab/cate-cyan.png',
+				'/static/tab/my-cyan.png'
 			]
 		},
 		{
@@ -328,10 +328,10 @@ export default {
 			name: 'blue',
 			color: '#0081ff',
 			tabList: [
-				'/static/tab-home-blue.png',
-				'/static/tab-notify-blue.png',
-				'/static/tab-cate-blue.png',
-				'/static/tab-my-blue.png'
+				'/static/tab/home-blue.png',
+				'/static/tab/notify-blue.png',
+				'/static/tab/cate-blue.png',
+				'/static/tab/my-blue.png'
 			]
 		},
 		{
@@ -339,10 +339,10 @@ export default {
 			name: 'purple',
 			color: '#6739b6',
 			tabList: [
-				'/static/tab-home-purple.png',
-				'/static/tab-notify-purple.png',
-				'/static/tab-cate-purple.png',
-				'/static/tab-my-purple.png'
+				'/static/tab/home-purple.png',
+				'/static/tab/notify-purple.png',
+				'/static/tab/cate-purple.png',
+				'/static/tab/my-purple.png'
 			]
 		},
 		{
@@ -350,10 +350,10 @@ export default {
 			name: 'mauve',
 			color: '#9c26b0',
 			tabList: [
-				'/static/tab-home-mauve.png',
-				'/static/tab-notify-mauve.png',
-				'/static/tab-cate-mauve.png',
-				'/static/tab-my-mauve.png'
+				'/static/tab/home-mauve.png',
+				'/static/tab/notify-mauve.png',
+				'/static/tab/cate-mauve.png',
+				'/static/tab/my-mauve.png'
 			]
 		},
 		{
@@ -361,10 +361,10 @@ export default {
 			name: 'pink',
 			color: '#e03997',
 			tabList: [
-				'/static/tab-home-pink.png',
-				'/static/tab-notify-pink.png',
-				'/static/tab-cate-pink.png',
-				'/static/tab-my-pink.png'
+				'/static/tab/home-pink.png',
+				'/static/tab/notify-pink.png',
+				'/static/tab/cate-pink.png',
+				'/static/tab/my-pink.png'
 			]
 		},
 		{
@@ -372,10 +372,10 @@ export default {
 			name: 'brown',
 			color: '#a5673f',
 			tabList: [
-				'/static/tab-home-brown.png',
-				'/static/tab-notify-brown.png',
-				'/static/tab-cate-brown.png',
-				'/static/tab-my-brown.png'
+				'/static/tab/home-brown.png',
+				'/static/tab/notify-brown.png',
+				'/static/tab/cate-brown.png',
+				'/static/tab/my-brown.png'
 			]
 		},
 		{
@@ -383,10 +383,10 @@ export default {
 			name: 'grey',
 			color: '#8799a3',
 			tabList: [
-				'/static/tab-home-grey.png',
-				'/static/tab-notify-grey.png',
-				'/static/tab-cate-grey.png',
-				'/static/tab-my-grey.png'
+				'/static/tab/home-grey.png',
+				'/static/tab/notify-grey.png',
+				'/static/tab/cate-grey.png',
+				'/static/tab/my-grey.png'
 			]
 		},
 		{
@@ -394,10 +394,10 @@ export default {
 			name: 'gray',
 			color: '#aaaaaa',
 			tabList: [
-				'/static/tab-home-gray.png',
-				'/static/tab-notify-gray.png',
-				'/static/tab-cate-gray.png',
-				'/static/tab-my-gray.png'
+				'/static/tab/home-gray.png',
+				'/static/tab/notify-gray.png',
+				'/static/tab/cate-gray.png',
+				'/static/tab/my-gray.png'
 			]
 		},
 		{
@@ -405,12 +405,12 @@ export default {
 			name: 'black',
 			color: '#333333',
 			tabList: [
-				'/static/tab-home-black.png',
-				'/static/tab-notify-black.png',
-				'/static/tab-cate-black.png',
-				'/static/tab-my-black.png'
+				'/static/tab/home-black.png',
+				'/static/tab/notify-black.png',
+				'/static/tab/cate-black.png',
+				'/static/tab/my-black.png'
 			]
 		}
 	],
-	
+
 };

@@ -8,14 +8,14 @@
 			<view class="wrapper">
 				<view class="left-top-sign">LOGIN</view>
 				<view class="welcome">
-					欢迎回来！
+					登录！
 				</view>
 				<view class="input-content">
 
 					<view class="input-item">
 						<text class="tit">手机号码</text>
-						<input type="number" name="mobile" placeholder="请输入手机号码" maxlength="11" 
-							@blur="blurMobileChange" 
+						<input type="number" name="mobile" placeholder="请输入手机号码" maxlength="11"
+							@blur="blurMobileChange"
 							v-model="model.mobile"/>
 					</view>
 					<view class="input-item input-item-sms-code">
@@ -29,7 +29,7 @@
 											maxlength="4"
 											data-key="mobile"
 										/>
-									</view>		
+									</view>
 										<button
 											class="sms-code-btn"
 											:disabled="smsCodeBtnDisabled"
@@ -43,11 +43,11 @@
 									</view>
 								</view>
 
-					
-					<button class="confirm-btn" :class="'bg-' + themeColor.name" 
+
+					<button class="confirm-btn" :class="'bg-' + themeColor.name"
 						:disabled="btnLoading"
 						:loading="btnLoading"
-						@tap="toLogin">	
+						@tap="toLogin">
 						登录
 					</button>
 				</view>
@@ -86,7 +86,7 @@
 				this.codeSeconds = this.$mConstDataConfig.sendCodeTime;
 				this.smsCodeBtnDisabled = false;
 				uni.removeStorageSync('loginSmsCodeTime');
-			}	
+			}
 		},
 		methods: {
 			// 失去焦点的手机号
@@ -115,7 +115,7 @@
 						} else {
 							this.$mHelper.toast(r.msg === '手机号未注册' ? '手机号未绑定账号' : r.msg);
 						}
-					})			
+					})
 			},
 			handleSmsCodeTime(time) {
 				let timer = setInterval(() => {
@@ -185,7 +185,7 @@
 							console.log('用户绑定 success!')
 						})
 					}
-				})	
+				})
 			},
 		}
 	}
