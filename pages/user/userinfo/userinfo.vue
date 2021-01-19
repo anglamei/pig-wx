@@ -6,13 +6,13 @@
 			<!--#ifdef H5-->
 			<!--h5直接上传头像-->
 			<view class="portrait-box" @tap="uploadImage">
-				<image class="portrait" :src="headImg"></image>
+				<image class="portrait" :src="(url + profileInfo.avatar) || headImg"></image>
 			</view>
 			<!-- #endif -->
 			<!--#ifndef H5-->
 			<!--非h5裁剪头像上传-->
 			<view class="portrait-box">
-				<avatar canRotate="false" selWidth="200px" selHeight="400upx" @upload="handleUploadFile" :avatarSrc="headImg"
+				<avatar canRotate="false" selWidth="200px" selHeight="400upx" @upload="handleUploadFile" :avatarSrc="(url + profileInfo.avatar) || headImg"
 				 avatarStyle="width: 200upx; height: 200upx; border-radius: 100%; border: 6upx solid #fff;">
 				</avatar>
 			</view>
@@ -21,38 +21,24 @@
 		<view class="input-content">
 
 			<view class="input-item">
+				<text class="tit">用户名</text>
+				<input type="text" v-model="profileInfo.username" disabled placeholder="请输入您的用户名" />
+			</view>
+			<view class="input-item">
 				<text class="tit">手机号</text>
-				<input type="number" v-model="profileInfo.mobile" disabled placeholder="请输入手机号码" />
+				<input type="number" v-model="profileInfo.phone" placeholder="请输入手机号码" />
 			</view>
 			<view class="input-item">
-				<text class="tit">姓　名</text>
-				<input type="text" v-model="profileInfo.realname" placeholder="请输入您的姓名" />
+				<text class="tit"><text style="color:red">*</text>原密码</text>
+				<input v-model="profileInfo.password" type="password" placeholder="请输入原密码"/>
 			</view>
 			<view class="input-item">
-				<text class="tit">性　别</text>
-				<radio-group @change="handleGenderChange">
-					<label class="gender-item" v-for="(item, index) in genders" :key="index">
-						<radio class="gender-item-radio" :color="themeColor.color" :value="item.value" :checked="item.value === profileInfo.gender" />
-						<text class="gender-item-text">{{ item.name }}</text>
-					</label>
-				</radio-group>
-			</view>
-
-			<view class="input-item">
-				<text class="tit">生　日</text>
-				<picker mode="date" v-model="date" @change="bindDateChange">
-					<view class="date" style="background: none;">{{
-						date || '请选择日期'
-					}}</view>
-				</picker>
+				<text class="tit">新密码</text>
+				<input v-model="profileInfo.newpassword1" type="password" placeholder="请输入新密码" />
 			</view>
 			<view class="input-item">
-				<text class="tit">Q　Q</text>
-				<input type="number" v-model="profileInfo.qq" placeholder="请输入您的QQ" />
-			</view>
-			<view class="input-item">
-				<text class="tit">邮　箱</text>
-				<input v-model="profileInfo.email" placeholder="请输入您的邮箱" />
+				<text class="tit">确认密码</text>
+				<input v-model="profileInfo.newpassword2" type="password" placeholder="请确认密码" />
 			</view>
 			<button class="confirm-btn" :class="'bg-' + themeColor.name" :disabled="btnLoading" :loading="btnLoading" @tap="toUpdateInfo">
 				修改资料
@@ -64,42 +50,18 @@
 
 <script>
 	import avatar from '@/components/oa-avatar/oa-avatar';
-	import moment from '@/common/moment';
-	import rfPickRegions from '@/components/oa-pick-regions';
+	import { editInfo } from "@/api/admin/user";
 	export default {
 		components: {
-			avatar,
-			rfPickRegions
+			avatar
 		},
 		data() {
 			return {
-				profileInfo: {
-					"username": "18986860543",
-					"realname": "古月",
-					"gender": "1",
-					"qq": "219311",
-					"email": "21931118@qq.com",
-					"birthday": "1999-09-09",
-					"mobile": "18986860543"
-				},
-				genders: [{
-						value: '0',
-						name: '未知'
-					},
-					{
-						value: '1',
-						name: '男'
-					},
-					{
-						value: '2',
-						name: '女'
-					}
-				],
-				date: moment().format('YYYY-MM-DD'),
-				token: null,
+				profileInfo: {},
 				loading: true,
 				headImg: this.$mAssetsPath.headImg,
 				userBg: this.$mAssetsPath.userBg,
+				url: this.$mAssetsPath.url,
 				btnLoading: false
 			};
 		},
@@ -114,16 +76,15 @@
 			})
 		},
 		onLoad() {
-			// this.initData();
+			this.initData();
 		},
 		methods: {
-			// 获取选择的地区
-			handleGetRegions(e) {
-				this.addressData.province_id = e.province_id;
-				this.addressData.city_id = e.city_id;
-				this.addressData.area_id = e.area_id;
+			// 数据初始化
+			async initData() {
+				let userInfo = uni.getStorageSync('userInfo');
+				this.profileInfo = userInfo
+				this.loading = false;
 			},
-
 			// 上传头像
 			uploadImage() {
 				// 从相册选择图片
@@ -139,22 +100,24 @@
 			},
 			// 上传头像
 			handleUploadFile(data) {
-				this.$mHelper.toast('头像上传中...');
+				const _this = this;
+				const filePath = data.path || data[0];
+				_this.$http
+					.upload('/admin/sys-file/upload', {
+						filePath,
+						name: 'file'
+					})
+					.then(r => {
+						_this.profileInfo.avatar = r.data.url;
+					});
 			},
-			// 监听日期更改
-			bindDateChange(e) {
-				this.date = e.target.value;
-			},
-			// 监听性别更改
-			handleGenderChange(e) {
-				this.profileInfo.gender = e.detail.value;
-			},
-
 			// 更新用户信息
 			async toUpdateInfo() {
-				this.$mHelper.toast('恭喜您, 资料修改成功!');
+				if (!this.profileInfo.password) return this.$mHelper.toast('原密码不能为空');
+				this.$http.put(editInfo, this.profileInfo).then(res =>{
+					this.$mHelper.toast('恭喜您, 资料修改成功!');
+				})
 			},
-
 		}
 	};
 </script>
@@ -184,7 +147,7 @@
 
 			.portrait-box {
 				clear: both;
-				z-index: 2;
+				z-index: 3;
 			}
 
 			.portrait {
@@ -234,7 +197,7 @@
 				}
 
 				.tit {
-					width: 100upx;
+					width: 130upx;
 					font-size: $font-sm + 2upx;
 					color: $font-color-base;
 				}
@@ -247,25 +210,6 @@
 					color: $font-color-dark;
 				}
 
-				.date {
-					height: 80upx;
-					line-height: 80upx;
-					font-size: $font-base + 2upx;
-					color: $font-color-dark;
-				}
-
-				.gender-item {
-					margin-right: 20upx;
-
-					.gender-item-text {
-						padding-left: 10upx;
-					}
-
-					radio .wx-radio-input.wx-radio-input-checked {
-						background: $uni-color-primary;
-						border-color: $uni-color-primary;
-					}
-				}
 			}
 		}
 	}

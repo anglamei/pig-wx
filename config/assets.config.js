@@ -1,5 +1,6 @@
 import indexConfig from './index.config.js';
 const PATH = indexConfig.assetsPath;
+const baseUrl = indexConfig.baseUrl
 /*
  * 图片静态资源表，所有图片资源路径在这统一管理，不应该写死在页面中，该数据挂载到Vue原型中。
  * 页面使用：this.$mAssetsPath.grid_1
@@ -22,13 +23,7 @@ export default {
 	logo: PATH + '/logo.png',
 
 	// 新闻
-	newsBg: PATH + '/news.png',
-
-	// 新闻
 	userBg: PATH + '/user-bg.png',
-
-	// vip背景
-	vipCardBg: PATH + '/vip-card.png',
 
 	// 弧形背景
 	arc: PATH + '/arc.png',
@@ -42,10 +37,7 @@ export default {
 	// 升级图标
 	upgradeTop: PATH + '/upgrade-top.png',
 
-	// 登录背景
-	loginBg: PATH + '/login-bg.png',
-
-	// 登录插画
-	loginPic: PATH + '/login-pic.png',
+	// 域名地址
+	url: baseUrl
 
 };

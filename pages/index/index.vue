@@ -155,6 +155,12 @@
 				});
 			},
 
+			// 通用跳转
+			navToLogin(route) {
+				this.$mRouter.push({
+					route
+				});
+			},			
 		}
 	};
 </script>

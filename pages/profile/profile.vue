@@ -6,7 +6,7 @@
 			<!--用户信息-->
 			<view class="user-info-box">
 				<view class="portrait-box" @tap="navTo(`/pages/public/login`)">
-					<image class="portrait" :src="userInfo.avatar || headImg"></image>
+					<image class="portrait" :src="headImg"></image>
 					<text class="username">
 						{{userInfo.username ||'登录/注册'}}
 						{{userInfo.phone || '没有填写手机号'}}
@@ -118,7 +118,6 @@
 				setList: this.$mConstDataConfig.setList,
 				headImg: this.$mAssetsPath.headImg,
 				userBg: this.$mAssetsPath.userBg,
-				vipCardBg: this.$mAssetsPath.vipCardBg,
 				arc: this.$mAssetsPath.arc,
 				coverTransform: 'translateY(0px)',
 				coverTransition: '0s',
@@ -157,8 +156,11 @@
 			async initData() {
 				this.user = uni.getStorageSync('user');
 				this.userInfo = uni.getStorageSync('userInfo');
+				if (this.userInfo.avatar) {
+					this.headImg = this.$mAssetsPath.url + this.userInfo.avatar
+				}
 				// 缓存大小
-				this.setList[2].content = `${uni.getStorageInfoSync().currentSize} kb`;
+				this.setList[1].content = `${uni.getStorageInfoSync().currentSize} kb`;
 				// #ifdef APP-PLUS
 				this.setList[5].content = `当前版本 V1.0.0`;
 				// #endif
@@ -220,7 +222,7 @@
 						success: e => {
 							if (e.confirm) {
 								uni.clearStorageSync();
-								this.setList[2].content = '0 kb';
+								this.setList[1].content = '0 kb';
 								this.$mStore.commit('login', this.user);
 								this.$mHelper.toast('清除缓存成功');
 							}
@@ -239,7 +241,7 @@
 					});
 				}
 			},
-				
+
 			coverTouchstart(e) {
 				if (pageAtTop === false) {
 					return;
@@ -278,6 +280,14 @@
 <style lang="scss" scoped>
 	page {
 		background-color: $page-color-base;
+	}
+
+	.list-cell.b-b{
+		&:nth-child(2),&:nth-child(5){
+			&:after{
+				border:none;
+			}
+		}
 	}
 
 	.user {

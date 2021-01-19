@@ -12,11 +12,11 @@ export default {
 			url: '/pages/user/userinfo/userinfo',
 			content: ''
 		},
-		{
-			title: '修改密码',
-			url: '/pages/public/password?type=1',
-			content: ''
-		},
+		// {
+		// 	title: '修改密码',
+		// 	url: '/pages/public/password?type=1',
+		// 	content: ''
+		// },
 		{
 			title: '清除缓存',
 			url: 'clearCache',

@@ -54,8 +54,8 @@
 
 			</view>
 			<view class="register-section">
-				<text @tap="navTo('/pages/public/password')">找回密码</text>
-				或者
+				<!-- <text @tap="navTo('/pages/public/password')">找回密码</text>
+				或者 -->
 				<text @tap="toHome">返回主页</text>
 			</view>
 		</view>
@@ -66,9 +66,6 @@
 <script>
 	import moment from '@/common/moment';
 	export default {
-		components: {
-
-		},
 		data() {
 			return {
 				smsCodeBtnDisabled: false,
