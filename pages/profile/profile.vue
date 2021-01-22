@@ -9,15 +9,15 @@
 					<image class="portrait" :src="headImg"></image>
 					<text class="username">
 						{{userInfo.username ||'登录/注册'}}
-						{{userInfo.phone || '没有填写手机号'}}
+						{{userInfo.phone || ''}}
 					</text>
 				</view>
 			</view>
 			<!--vip信息-->
 			<view class="vip-card-box">
-				<view class="b-btn">
+			<!-- 	<view class="b-btn">
 					{{'系统管理员'}}
-				</view>
+				</view> -->
 				<view class="tit">
 					<i class="iconfont iconzuanshi" />
 					{{ '金华航大北斗应用技术有限公司' }}
@@ -99,9 +99,7 @@
 	</view>
 </template>
 <script>
-	import {
-		mapMutations
-	} from 'vuex';
+	import { mapMutations } from 'vuex';
 	import listCell from '@/components/oa-list-cell';
 	let startY = 0,
 		moveY = 0,

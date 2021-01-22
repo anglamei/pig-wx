@@ -6,13 +6,13 @@
 			<!--#ifdef H5-->
 			<!--h5直接上传头像-->
 			<view class="portrait-box" @tap="uploadImage">
-				<image class="portrait" :src="(url + profileInfo.avatar) || headImg"></image>
+				<image class="portrait" :src="profileInfo.avatar ? (url + profileInfo.avatar) : headImg"></image>
 			</view>
 			<!-- #endif -->
 			<!--#ifndef H5-->
 			<!--非h5裁剪头像上传-->
 			<view class="portrait-box">
-				<avatar canRotate="false" selWidth="200px" selHeight="400upx" @upload="handleUploadFile" :avatarSrc="(url + profileInfo.avatar) || headImg"
+				<avatar canRotate="false" selWidth="200px" selHeight="400upx" @upload="handleUploadFile" :avatarSrc="profileInfo.avatar ? (url + profileInfo.avatar) : headImg"
 				 avatarStyle="width: 200upx; height: 200upx; border-radius: 100%; border: 6upx solid #fff;">
 				</avatar>
 			</view>
@@ -23,10 +23,6 @@
 			<view class="input-item">
 				<text class="tit">用户名</text>
 				<input type="text" v-model="profileInfo.username" disabled placeholder="请输入您的用户名" />
-			</view>
-			<view class="input-item">
-				<text class="tit">手机号</text>
-				<input type="number" v-model="profileInfo.phone" placeholder="请输入手机号码" />
 			</view>
 			<view class="input-item">
 				<text class="tit"><text style="color:red">*</text>原密码</text>
