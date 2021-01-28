@@ -21,7 +21,7 @@
 			</view>
 			<view class="qrcode-wrapper">
 				<view class="qrcode-img-wrapper">
-					<oa-image class="qrcode-img" :src="aboutInfo.qrcode || ''" ></oa-image>
+					<oa-image class="qrcode-img" :src="qrcode || ''" ></oa-image>
 				</view>
 				<text class="info">扫码后在浏览器打开</text>
 			</view>
@@ -32,9 +32,8 @@
 export default {
 	data() {
 		return {
-			aboutInfo: {},
+			qrcode: this.$mAssetsPath.qrcode,
 			navList: [
-
 				{ title: '关于我们', url: 'about_me' },
 				{ title: '注册协议', url: 'protocol_register' },
 				{ title: '隐私协议', url: 'protocol_privacy' }

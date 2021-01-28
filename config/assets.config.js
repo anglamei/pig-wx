@@ -38,6 +38,9 @@ export default {
 	upgradeTop: PATH + '/upgrade-top.png',
 
 	// 域名地址
-	url: baseUrl
+	url: baseUrl,
+	
+	// 二维码
+	qrcode: PATH + '/qrcode.png',
 
 };

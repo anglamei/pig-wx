@@ -1,5 +1,13 @@
 {
 	"pages": [
+		// 直播
+		{
+			"path": "pages/live/index",
+			"style": {
+				"enablePullDownRefresh": true,
+				"navigationBarTitleText": "直播"
+			}
+		},
 		// 主页
 		{
 			"path": "pages/index/index",
