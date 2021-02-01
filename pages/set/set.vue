@@ -14,7 +14,7 @@
 			<text class="cell-more iconfont iconyou"></text>
 		</view>
 		<!-- #ifdef APP-PLUS -->
-		
+
 		<!-- #endif -->
 		<view class="cu-list menu sm-border card-menu" v-if="styleUserIsOpen">
 			<view class="cu-item">
@@ -177,14 +177,14 @@ export default {
 						this.$http.post(`${logout}`).then(() => {
 							this.$mStore.commit('logout');
 							uni.reLaunch({
-								url: '/pages/profile/profile'
+								url: '/pages/tabs/profile/index'
 							});
 						});
 					}
 				}
 			});
 		},
-		
+
 		showColorModal() {
 			this.colorModal = true;
 		},

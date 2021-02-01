@@ -90,7 +90,7 @@ export default {
 			this.$mRouter.push({ route });
 		},
 		toHome() {
-			this.$mRouter.reLaunch({ route: '/pages/index/index' });
+			this.$mRouter.reLaunch({ route: '/pages/tabs/index/index' });
 		},
 		
 	}

@@ -1,8 +1,48 @@
 <template>
 	<view class="notify">
 		<view class="promotion-center">
-			<list-cell icon="iconfenlei" :iconColor="themeColor.color" navigateType=""  title="工作流"></list-cell>
+
+			<!-- 权限管理 -->
+			<list-cell icon="iconfenxiaozhongxin" :iconColor="themeColor.color" navigateType=""  title="权限管理"></list-cell>
+			<view class="category-list">
+				<view class="category" v-for="(item, index) in adminList" :key="index" @tap.stop="navTo(item.url)">
+					<view >
+						<view class="img">
+							<text class="iconfont" :class="[item.icon, 'text-'+themeColor.name]"></text>
+						</view>
+						<view class="text">{{ item.title }}</view>
+					</view>
+				</view>
+			</view>
+
+			<!-- 系统管理 -->
+			<list-cell icon="iconliebiaoqiehuan" :iconColor="themeColor.color" navigateType=""  title="系统管理"></list-cell>
+			<view class="category-list">
+				<view class="category" v-for="(item, index) in systemList" :key="index" @tap.stop="navTo(item.url)">
+					<view >
+						<view class="img">
+							<text class="iconfont" :class="[item.icon, 'text-'+themeColor.name]"></text>
+						</view>
+						<view class="text">{{ item.title }}</view>
+					</view>
+				</view>
+			</view>
+
+			<!-- 开发平台 -->
+			<list-cell icon="iconzongjie" :iconColor="themeColor.color" navigateType=""  title="开发平台"></list-cell>
+			<view class="category-list">
+				<view class="category" v-for="(item, index) in genList" :key="index" @tap.stop="navTo(item.url)">
+					<view >
+						<view class="img">
+							<text class="iconfont" :class="[item.icon, 'text-'+themeColor.name]"></text>
+						</view>
+						<view class="text">{{ item.title }}</view>
+					</view>
+				</view>
+			</view>
+
 			<!-- 业务中心 -->
+			<list-cell icon="iconfenlei" :iconColor="themeColor.color" navigateType=""  title="工作流"></list-cell>
 			<view class="category-list">
 				<view class="category" v-for="(item, index) in worksList" :key="index" @tap.stop="navTo(item.url)">
 					<view >
@@ -11,9 +51,9 @@
 						</view>
 						<view class="text">{{ item.title }}</view>
 					</view>
-
 				</view>
 			</view>
+
 			<!-- 日常管理 -->
 			<list-cell icon="iconyingyong" :iconColor="themeColor.color" navigateType=""  title="日常管理" ></list-cell>
 			<view class="category-list">
@@ -24,9 +64,9 @@
 						</view>
 						<view class="text">{{ item.title }}</view>
 					</view>
-
 				</view>
 			</view>
+
 			<!-- 其他应用 -->
 			<list-cell icon="iconyingyong" :iconColor="themeColor.color" navigateType=""  title="其他应用" ></list-cell>
 			<view class="category-list" >
@@ -39,25 +79,10 @@
 					</view>
 				</view>
 			</view>
-		<!-- 学习中心 -->
-			<list-cell icon="iconxuexi" :iconColor="themeColor.color" navigateType=""  title="学习中心"></list-cell>
-			<view class="category-list">
-				<view class="category" v-for="(item, index) in studySectionList" :key="index" @tap.stop="navTo(item.url)">
-					<view >
-						<view class="img">
-							<text class="iconfont" :class="[item.icon, 'text-'+themeColor.name]"></text>
-						</view>
-						<view class="text">{{ item.title }}</view>
-					</view>
 
-				</view>
-			</view>
 
 		</view>
-
-
 	</view>
-
 </template>
 <script>
 	// import {memberInfo} from '@/api/userInfo';
@@ -76,8 +101,10 @@
 		data() {
 			return {
 				hasLogin: false,
+				adminList: this.$mConstDataConfig.adminList,
+				systemList: this.$mConstDataConfig.systemList,
+				genList: this.$mConstDataConfig.genList,
 				worksList: this.$mConstDataConfig.worksList,
-				studySectionList: this.$mConstDataConfig.studySectionList,
 				manageSectionList: this.$mConstDataConfig.manageSectionList,
 				otherSectionList: this.$mConstDataConfig.otherSectionList,
 			};
@@ -110,7 +137,7 @@
 					}
 				})
 			},
-			
+
 			// 统一跳转接口,拦截未登录路由
 			navTo(route) {
 				if (!route) return;

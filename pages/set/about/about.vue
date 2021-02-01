@@ -57,7 +57,7 @@ export default {
 	methods: {
 		// 初始化数据
 		initData() {
-			uni.setNavigationBarTitle({ title: `关于维博网络` });
+			uni.setNavigationBarTitle({ title: `关于北航金华北斗应用研究院` });
 			const userInfo = uni.getStorageSync('userInfo') || {};
 		},
 		// 统一跳转接口

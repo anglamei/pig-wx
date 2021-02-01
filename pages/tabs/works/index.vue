@@ -1,7 +1,7 @@
 <template>
 	<view class="visit">
 		<view class="notify-list">
-			<view  class="row" @tap="navTo(`/pages/works/detail?id=1`)">
+			<view  class="row" @tap="navTo(`/pages/tabs/works/detail?id=1`)">
 				<view class="carrier">
 					<view class="notify-wrapper">
 						<view class="title in1line">张三</view>
@@ -10,7 +10,7 @@
 					</view>
 				</view>
 			</view>
-			<view  class="row" @tap="navTo(`/pages/works/detail?id=1`)">
+			<view  class="row" @tap="navTo(`/pages/tabs/works/detail?id=1`)">
 				<view class="carrier">
 					<view class="notify-wrapper">
 						<view class="title in1line">张三</view>
@@ -19,7 +19,7 @@
 					</view>
 				</view>
 			</view>
-			<view  class="row" @tap="navTo(`/pages/works/detail?id=1`)">
+			<view  class="row" @tap="navTo(`/pages/tabs/works/detail?id=1`)">
 				<view class="carrier">
 					<view class="notify-wrapper">
 						<view class="title in1line">张三</view>
@@ -28,7 +28,7 @@
 					</view>
 				</view>
 			</view>
-			<view  class="row" @tap="navTo(`/pages/works/detail?id=1`)">
+			<view  class="row" @tap="navTo(`/pages/tabs/works/detail?id=1`)">
 				<view class="carrier">
 					<view class="notify-wrapper">
 						<view class="title in1line">张三</view>
@@ -37,7 +37,7 @@
 					</view>
 				</view>
 			</view>
-			<view  class="row" @tap="navTo(`/pages/works/detail?id=1`)">
+			<view  class="row" @tap="navTo(`/pages/tabs/works/detail?id=1`)">
 				<view class="carrier">
 					<view class="notify-wrapper">
 						<view class="title in1line">张三</view>
@@ -46,7 +46,7 @@
 					</view>
 				</view>
 			</view>
-			<view  class="row" @tap="navTo(`/pages/works/detail?id=1`)">
+			<view  class="row" @tap="navTo(`/pages/tabs/works/detail?id=1`)">
 				<view class="carrier">
 					<view class="notify-wrapper">
 						<view class="title in1line">张三</view>
@@ -55,7 +55,7 @@
 					</view>
 				</view>
 			</view>
-			<view  class="row" @tap="navTo(`/pages/works/detail?id=1`)">
+			<view  class="row" @tap="navTo(`/pages/tabs/works/detail?id=1`)">
 				<view class="carrier">
 					<view class="notify-wrapper">
 						<view class="title in1line">张三</view>

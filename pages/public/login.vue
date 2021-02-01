@@ -136,7 +136,7 @@
 			},
 			// 返回主页
 			toHome() {
-				this.$mRouter.reLaunch({ route: '/pages/index/index' });
+				this.$mRouter.reLaunch({ route: '/pages/tabs/index/index' });
 			},
 			// 提交表单
 			async toLogin() {
@@ -164,7 +164,7 @@
 						this.setUserBind()
 						// #endif
 						this.btnLoading = false;
-						this.$mRouter.reLaunch({ route: '/pages/profile/profile' });
+						this.$mRouter.reLaunch({ route: '/pages/tabs/profile/index' });
 					})
 					.catch(() => {
 						this.btnLoading = false;

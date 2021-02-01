@@ -1,7 +1,7 @@
 <template>
 	<view class="repair">
 		<view class="repair-list">
-			<view  class="row" @tap="navTo(`/pages/works/repair/detail?id=1`)">
+			<view  class="row" @tap="navTo(`/pages/tabs/works/repair/detail?id=1`)">
 				<view class="carrier">
 					<view class="repair-wrapper">
 						<view class="title in1line">
@@ -14,7 +14,7 @@
 					</view>
 				</view>
 			</view>
-			<view  class="row" @tap="navTo(`/pages/works/repair/detail?id=1`)">
+			<view  class="row" @tap="navTo(`/pages/tabs/works/repair/detail?id=1`)">
 				<view class="carrier">
 					<view class="repair-wrapper">
 						<view class="title in1line">
@@ -27,7 +27,7 @@
 					</view>
 				</view>
 			</view>
-			<view  class="row" @tap="navTo(`/pages/works/repair/detail?id=1`)">
+			<view  class="row" @tap="navTo(`/pages/tabs/works/repair/detail?id=1`)">
 				<view class="carrier">
 					<view class="repair-wrapper">
 						<view class="title in1line">
@@ -40,7 +40,7 @@
 					</view>
 				</view>
 			</view>
-			<view  class="row" @tap="navTo(`/pages/works/repair/detail?id=1`)">
+			<view  class="row" @tap="navTo(`/pages/tabs/works/repair/detail?id=1`)">
 				<view class="carrier">
 					<view class="repair-wrapper">
 						<view class="title in1line">
@@ -53,7 +53,7 @@
 					</view>
 				</view>
 			</view>
-			<view  class="row" @tap="navTo(`/pages/works/repair/detail?id=1`)">
+			<view  class="row" @tap="navTo(`/pages/tabs/works/repair/detail?id=1`)">
 				<view class="carrier">
 					<view class="repair-wrapper">
 						<view class="title in1line">
@@ -66,7 +66,7 @@
 					</view>
 				</view>
 			</view>
-			<view  class="row" @tap="navTo(`/pages/works/repair/detail?id=1`)">
+			<view  class="row" @tap="navTo(`/pages/tabs/works/repair/detail?id=1`)">
 				<view class="carrier">
 					<view class="repair-wrapper">
 						<view class="title in1line">
@@ -81,7 +81,7 @@
 			</view>
 		</view>
 
-		<view class="add-round bg-deepBlue" :class="'bg-' + themeColor.name" @click="navTo(`/pages/works/repair/add`)">
+		<view class="add-round bg-deepBlue" :class="'bg-' + themeColor.name" @click="navTo(`/pages/tabs/works/repair/add`)">
 			<text class="cuIcon-add text-xxl"></text>
 		</view>
 	</view>

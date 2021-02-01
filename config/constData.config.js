@@ -5,6 +5,106 @@ export default {
 	// 验证码发送间隔
 	sendCodeTime: 60,
 
+	// 应用 - 权限管理
+	adminList: [
+		{
+			title: '用户管理',
+			icon: 'icontuandui',
+			url: '/pages/admin/user/index'
+		},
+		{
+			title: '菜单管理',
+			icon: 'iconfenlei3',
+			url: '/pages/admin/menu/index'
+		},
+		{
+			title: '角色管理',
+			icon: 'iconziliaoguanli',
+			url: '/pages/admin/role/index'
+		},
+		{
+			title: '部门管理',
+			icon: 'icongongzuoliucheng01',
+			url: '/pages/admin/dept/index'
+		},
+		{
+			title: '租户管理',
+			icon: 'iconxiatubiao--copy',
+			url: '/pages/admin/tenant/index'
+		}
+	],
+	// 应用 - 系统管理
+	systemList: [
+		{
+			title: '日志管理',
+			icon: 'iconicon-test21',
+			url: '/pages/system/user/index'
+		},
+		{
+			title: '字典管理',
+			icon: 'iconguizhangzhidu',
+			url: '/pages/menu/index'
+		},
+		{
+			title: '文件管理',
+			icon: 'iconqianbao',
+			url: '/pages/role/index'
+		},
+		{
+			title: '参数管理',
+			icon: 'iconshouye',
+			url: '/pages/dept/index'
+		},
+		{
+			title: 'Quartz管理',
+			icon: 'iconqia',
+			url: '/pages/tenant/index'
+		},
+		{
+			title: '终端管理',
+			icon: 'iconxinwen',
+			url: '/pages/tenant/index'
+		},
+		{
+			title: '密钥管理',
+			icon: 'iconjianpanshuru',
+			url: '/pages/tenant/index'
+		},
+		{
+			title: '令牌管理',
+			icon: 'iconanquan',
+			url: '/pages/tenant/index'
+		},
+		{
+			title: '动态路由',
+			icon: 'iconquyudaili',
+			url: '/pages/tenant/index'
+		}
+	],
+	// 应用 - 开发平台（数据源管理、代码生成、表当设计、表单管理）
+	genList: [
+		{
+			title: '数据源管理',
+			icon: 'icontuiguangzhuanqian',
+			url: '/pages/user/index'
+		},
+		{
+			title: '代码生成',
+			icon: 'iconmimazhongzhi',
+			url: '/pages/menu/index'
+		},
+		{
+			title: '表当设计',
+			icon: 'iconrili',
+			url: '/pages/role/index'
+		},
+		{
+			title: '表单管理',
+			icon: 'iconricheng',
+			url: '/pages/dept/index'
+		}
+	],
+
 	// 设置-设置中心
 	setList: [
 		{
@@ -51,101 +151,72 @@ export default {
 	//应用中心-工作流
 	worksList: [{
 			icon: 'iconbaoxiu',
-			url: '/pages/works/repair/index',
+			url: '/pages/tabs/works/repair/index',
 			title: '报修',
 			color: '#ff6b81'
 		},
 		{
 			icon: 'iconbangongyongpin',
-			url: '/pages/works/repair/index',
+			url: '/pages/tabs/works/repair/index',
 			title: '申领',
 			color: '#ff6b81'
 		},
 		{
 			icon: 'icongoumai',
-			url: '/pages/works/repair/index',
+			url: '/pages/tabs/works/repair/index',
 			title: '申购',
 			color: '#ff6b81'
 		},
 		{
 			icon: 'iconcheliang',
-			url: '/pages/works/repair/index',
+			url: '/pages/tabs/works/repair/index',
 			title: '用车',
 			color: '#ff6b81'
 		},
 		{
 			icon: 'iconjiabanshixiang',
-			url: '/pages/works/overtime/index',
+			url: '/pages/tabs/works/overtime/index',
 			title: '加班',
 			color: '#ff6b81'
 		},
 		{
 			icon: 'iconziyuan208',
-			url: '/pages/works/repair/index',
+			url: '/pages/tabs/works/repair/index',
 			title: '出差',
 			color: '#ff6b81'
 		},
 		{
 			icon: 'iconricheng',
-			url: '/pages/works/repair/index',
+			url: '/pages/tabs/works/repair/index',
 			title: '请假',
 			color: '#ff6b81'
 		},
 		{
 			icon: 'iconshenpijieshu',
-			url: '/pages/works/repair/index',
+			url: '/pages/tabs/works/repair/index',
 			title: '报销',
 			color: '#ff6b81'
 		},
-
-
 	],
-	// 学习中心
-	studySectionList: [{
-			title: '制度管理',
-			icon: 'iconguizhangzhidu',
-			url: '/pages/study/index?cate_id=3',
-			num: null
-		},
-		{
-			title: '安全知识',
-			icon: 'iconanquan',
-			url: '/pages/study/index?cate_id=5',
-			num: null
-		},
-		{
-			title: '业务知识',
-			icon: 'iconrizhi',
-			url: '/pages/study/index?cate_id=4',
-			num: null
-		},
-		{
-			title: '新闻动态',
-			icon: 'iconxinwen',
-			url: '/pages/study/index?cate_id=1',
-			num: null
-		}
-	],
-	// 个人中心
+	// 我的-个人中心
 	mycenterList: [{
 			title: '我的日志',
 			icon: 'iconguizhangzhidu',
-			url: '',
+			url: '/pages/mycenter/log/index',
 			num: null
 		},
 		{
 			title: '我的日程',
 			icon: 'iconanquan',
-			url: '',
+			url: '/pages/mycenter/calendar/index',
 			num: null
 		},
 		{
 			title: '我的总结',
 			icon: 'iconrizhi',
-			url: '',
+			url: '/pages/mycenter/summary/index',
 			num: null
 		}
-
 	],
 	// 日常应用
 	manageSectionList: [

@@ -1,7 +1,7 @@
 <template>
 	<view class="visit">
 		<view class="uni-list">
-			<view class="uni-list-cell" hover-class="uni-list-cell-hover" v-for="(item, index) in studyList" :key="index" @tap="navTo(`/pages/study/detail?id=${item.id}`)">
+			<view class="uni-list-cell" hover-class="uni-list-cell-hover" v-for="(item, index) in list" :key="index" @tap="navTo(`/pages/admin/user/detail?id=${item.id}`)">
 				<view class="uni-media-list">
 					<image class="uni-media-list-logo" :src="item.cover"></image>
 					<view class="uni-media-list-body">
@@ -24,7 +24,12 @@
 	export default {
 		data() {
 			return {
-				studyList: [{"id":"8","merchant_id":"2","title":"共创人类发展的美好未来","cover":"http://wephp-oa.oss-cn-shenzhen.aliyuncs.com/images/2020/09/10/image_1599669475_VQXiR1bX.jpg","seo_key":"","seo_content":"","cate_id":"1","description":"“十三五”期间，中国不断扩大开放，深入推进共建“一带一路”，构建人类命运共同体共识不断巩固，务实合作根基不断夯实，全球治理空间不断拓展。","position":"0","content":"","link":"","author":"","view":"473","sort":"0","status":"1","created_at":"1601956562","updated_at":"1601956617"},{"id":"7","merchant_id":"2","title":"办公系统正式开通","cover":"http://wephp-oa.oss-cn-shenzhen.aliyuncs.com/images/2020/09/10/image_1599669347_KbFsxS3m.jpg","seo_key":"","seo_content":"","cate_id":"1","description":"办公系统正式开通，请大家下载安装应用","position":"0","content":"","link":"","author":"维博网络","view":"473","sort":"0","status":"1","created_at":"1601915568","updated_at":"1606156145"}],
+				list: [
+					{"id":"8","merchant_id":"2","title":"共创人类发展的美好未来",
+					"cover":"http://wephp-oa.oss-cn-shenzhen.aliyuncs.com/images/2020/09/10/image_1599669475_VQXiR1bX.jpg",
+					"seo_key":"","seo_content":"","cate_id":"1",
+					"description":"“十三五”期间，中国不断扩大开放，深入推进共建“一带一路”，构建人类命运共同体共识不断巩固，务实合作根基不断夯实，全球治理空间不断拓展。","position":"0","content":"","link":"","author":"","view":"473","sort":"0","status":"1","created_at":"1601956562","updated_at":"1601956617"},{"id":"7","merchant_id":"2","title":"办公系统正式开通","cover":"http://wephp-oa.oss-cn-shenzhen.aliyuncs.com/images/2020/09/10/image_1599669347_KbFsxS3m.jpg","seo_key":"","seo_content":"","cate_id":"1",
+					"description":"办公系统正式开通，请大家下载安装应用","position":"0","content":"","link":"","author":"维博网络","view":"473","sort":"0","status":"1","created_at":"1601915568","updated_at":"1606156145"}],
 				// 控制滑动效果
 				theIndex: null,
 				oldIndex: null
@@ -39,7 +44,7 @@
 		async onLoad(options) {
 			await this.initData();
 		},
-		
+
 		methods: {
 			// 数据初始化
 			initData() {
@@ -54,7 +59,7 @@
 				});
 
 			},
-			
+
 			navTo(route) {
 				this.$mRouter.push({
 					route
