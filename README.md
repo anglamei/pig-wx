@@ -18,8 +18,6 @@
 巡更巡检(地点管理、巡更班次、巡更计划、我的排班、巡更记录)、
 意见反馈、站点帮助、在线客服、一键换肤等功能模块。
 
-### 演示
-![](http://wephp-oa.oss-cn-shenzhen.aliyuncs.com/images/2020/11/23/image_1606146357_mz3LWWi7.png)
 
 ### 部分截图
 ![](http://wephp-oa.oss-cn-shenzhen.aliyuncs.com/images/2020/11/24/image_1606211083_EqU6kbWZ.png)
